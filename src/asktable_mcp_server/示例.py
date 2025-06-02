@@ -1,12 +1,4 @@
-from asktable import Asktable
-
-import yaml
-
-with open('config.yaml', 'r') as file:
-    config = yaml.safe_load(file)
-
-api_key = config['api_key']
-datasource_id = config['datasource_id']
+# -*- coding: utf-8 -*-
 
 from asktable import Asktable
 
@@ -14,7 +6,6 @@ api_key = 'ADMIN_54RVZUHXDTONK3Z8GU35'
 datasource_id = "ds_5cyDhikeSfJVXk55lWE4ts"
 
 import asyncio
-
 
 async def asktable_query(datasource_id, question)->str:
     client = Asktable(api_key=api_key)
@@ -32,3 +23,8 @@ async def asktable_query(datasource_id, question)->str:
     )
 
     return message.content.text
+
+# 示例调用
+if __name__ == "__main__":
+    result = asyncio.run(asktable_query(datasource_id, "有多少用户？"))
+    print(result)
