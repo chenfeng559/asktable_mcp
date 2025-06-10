@@ -15,20 +15,18 @@ datasource_id = "ds_5cyDhikeSfJVXk55lWE4ts"
 
 import asyncio
 
+async def get_asktable_data(datasource_id, question):
+    base_url = "https://api.asktable.com"
+    asktable_client = Asktable(base_url= base_url,api_key=api_key)
+    answer_response = asktable_client.answers.create(datasource_id=datasource_id, question=question)
+    if answer_response.answer is None:
+        raise ValueError("No answer returned for your query.")
+    return answer_response.answer.text
 
-async def asktable_query(datasource_id, question)->str:
-    client = Asktable(api_key=api_key)
-
-    bot = client.bots.create(
-        datasource_ids=[datasource_id],
-        name="example_bot"
-    )
-    chat = client.chats.create(
-        bot_id=bot.id
-    )
-    message = client.chats.messages.create(
-        chat_id=chat.id,
-        question=question
-    )
-
-    return message.content.text
+async def get_asktable_sql(datasource_id, question):
+    base_url = "https://api.asktable.com"
+    asktable_client = Asktable(base_url= base_url,api_key=api_key)
+    query_response = asktable_client.sqls.create(datasource_id=datasource_id, question=question)
+    if query_response.query.sql is None: 
+        raise ValueError("No answer returned for your query.")
+    return query_response.query.sql
