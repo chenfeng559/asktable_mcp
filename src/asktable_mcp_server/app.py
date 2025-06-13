@@ -15,7 +15,7 @@ class UserClient:
         # )
         self.openai_client = OpenAI(
             base_url= "https://dashscope.aliyuncs.com/compatible-mode/v1",
-            api_key=""
+            api_key="sk-54db5592873f46d99a94b4b827c5f613"
         )
         self.tools = None  # 初始化为None，稍后异步加载
         # self.tools = self.prepare_tools

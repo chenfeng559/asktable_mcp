@@ -2,8 +2,8 @@
 
 from asktable import Asktable
 
-api_key = 'ADMIN_54RVZUHXDTONK3Z8GU35'
-datasource_id = "ds_5cyDhikeSfJVXk55lWE4ts"
+api_key = 'ADMIN_KUU80OIODNJ0FRPZLDIU'
+datasource_id = "ds_6iewvP4cpSyhO76P2Tv8MW"
 
 import asyncio
 
